@@ -5,12 +5,24 @@
 
 // Note to Tax: not the invested principal is taxed, but only the year's accrued interest
 
+function calculateYears(principal, interest, tax, desired) {
+    let years = 0
+    while (principal < desired){
+        principal += (principal * interest) - (principal * interest * tax)
+        years++
+    } 
+    return years
+}
+
 // Example:
 
 //   Let P be the Principal = 1000.00      
 //   Let I be the Interest Rate = 0.05      
 //   Let T be the Tax Rate = 0.18      
 //   Let D be the Desired Sum = 1100.00
+
+console.log(calculateYears(1000, .05, .18, 1100))
+console.log(calculateYears(1100, .05, .18, 1100))
 
 
 // After 1st Year -->
@@ -26,10 +38,3 @@
 // Assumption: Assume that Desired Principal 'D' is always greater than the initial principal. However it is best to take into consideration that if Desired Principal 'D' is equal to Principal 'P' this should return 0 Years.
 
 
-
-function calculateYears(principal, interest, tax, desired) {
-    // your code
-}
-
-
-console.log("oh hey there... hi")
