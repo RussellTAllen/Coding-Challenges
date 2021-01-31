@@ -62,31 +62,61 @@
         // }
         /////////////////////////////////////////////////////////////////////////////////////
 
-function deleteNth(arr,n){
-    let count, testNum, x
-    for (let i = 0; i < arr.length; i++){
-        console.log(arr + " initial " + " and " + i + " is index")
-        x = 1 + i
-        count = 1
-        testNum = arr[i]
-        // THIS is where the problem is ... maybe change it to a while loop, but the logic is def broken here
-        while (arr.indexOf(testNum, x) !== -1){
-                count++  
-                console.log(`count is ${count}`)
+// function deleteNth(arr,n){
+//     let count, testNum, x
+//     for (let i = 0; i < arr.length; i++){
+//         console.log(arr + " initial " + " and " + i + " is index")
+//         x = 1 + i
+//         count = 1
+//         testNum = arr[i]
+//         // THIS is where the problem is ... maybe change it to a while loop, but the logic is def broken here
+//         while (arr.indexOf(testNum, x) !== -1){
+//                 count++  
+//                 console.log(`count is ${count}`)
                 
-                if (arr.indexOf(testNum, x+1) !== -1){
-                    x = arr.indexOf(testNum, x+1)
-                    console.log(`x is ${x} and i is ${i}`)
-                } else break
-        }        
-        /////////////////////////////////////////////////////////////////////////////////////
-        while (count > n){
-            arr.splice(arr.lastIndexOf(testNum), 1)
-            count--
+//                 if (arr.indexOf(testNum, x+1) !== -1){
+//                     x = arr.indexOf(testNum, x+1)
+//                     console.log(`x is ${x} and i is ${i}`)
+//                 } else break
+//         }        
+//         /////////////////////////////////////////////////////////////////////////////////////
+//         while (count > n){
+//             arr.splice(arr.lastIndexOf(testNum), 1)
+//             count--
+//         }
+//     }
+//     return arr
+// }
+
+///////////////////////////////////////////////////////////////
+// Attempt #?? - try sorting the array and deleting the correct amount, then filter through and add the nums from the old array if they exist in the new array, delete the nums from the new array with each push
+
+function deleteNth(arr,n){
+    let ogArr = [...arr]
+    let result = []
+    let count
+    arr.sort((a,b) => a - b)
+    for (let i = 0; i < arr.length; i++){
+        count = 1
+        for (let j = i+1; j < arr.length; j++){
+            if(arr[i] === arr[j]) {
+                count++
+                if(count > n) {              
+                    arr.splice(j, 1)  
+                    j--
+                }
+            }
         }
     }
-    return arr
+    ogArr.forEach(num => {
+        if (arr.includes(num)){
+            result.push(num)
+            arr.splice(arr.indexOf(num), 1)
+        }
+    });
+    return result
 }
+
 
 console.log(deleteNth ([1,1,1,1],2))
 // return [1,1]
@@ -128,3 +158,42 @@ console.log(deleteNth([1,1,3,3,7,2,2,2,2], 3))
 
 
 // console.log(arr.indexOf(testNum, x))
+
+
+//////////////////////////////////
+// Clever solutions
+
+const deleteNth = (arr, n) =>
+  arr.filter((val, idx) => arr.slice(0, idx).filter(v => v === val).length < n);
+
+function deleteNth(arr, x) {
+    return arr.filter(
+      (e, i) => arr.slice(0, i).filter(e2 => e2 == e).length < x
+    );
+  }
+
+
+function deleteNth(arr,n){
+    const result = [];
+    
+    function counter(num) {
+      for(let i=0, count = 0; i<=result.length; i++){
+        
+        result.forEach(x => {
+            if (x === num){
+            count++;
+            }
+        })
+
+        if (count < n){
+          return result.push(num);
+        }
+      }
+    }
+    
+    arr.forEach(num => {
+      counter(num);
+    })
+    
+    return result;
+}
