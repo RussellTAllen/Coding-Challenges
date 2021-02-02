@@ -30,13 +30,14 @@
 // Happy hacking as they say!
 
 const solution = mtrx => {
-    console.log(mtrx[2][3])
     for(let i = 0; i < mtrx.length; i++){
-        
+        if (mtrx[i].includes('>') && mtrx[i].includes('x')){
+            if(mtrx[i].indexOf('>') < mtrx[i].indexOf('x')) return true
+            else return false
+        }
     }
+    return false
 }
-
-
 
 console.log(solution([
     [' ', ' ', ' ', ' '],
@@ -61,3 +62,12 @@ console.log(solution([
     [' ', ' ', ' ', ' ']
 ]))
 // --> false
+
+
+//////////////////////////
+// Solution using filter
+
+// const solution = mtrx =>{ 
+//     const arr = mtrx.filter(el => el.includes('>') && el.includes('x') )[0] || []
+//     return arr.indexOf('>') < arr.indexOf('x') 
+//   }
