@@ -36,3 +36,16 @@ console.log(solution('notcamelcase'))
 // string.splice(breakpoint, 0, " ")
 // string = string.join('')
 // string = string.split(' ')
+
+
+////
+// Another way -
+// function solution(string) {
+//     string = string.split('').map(function (el) {
+//       if (el === el.toUpperCase()) {
+//         el = ' ' + el
+//       }
+//       return el
+//     })
+//     return string.join('')
+//   }

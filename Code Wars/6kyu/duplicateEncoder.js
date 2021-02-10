@@ -43,36 +43,6 @@ console.log(duplicateEncode('deee)ue(aIFeQeO'))
 
 
 
-// function duplicateEncode(word){
-//     word = word.toLowerCase().split('')
-//     let replaceArr = []
-//     let len
-//     let count = 0
-//     let j
-
-//     for (let i = 0; i < word.length; i++){
-//         j = i + 1
-//         while( word.includes(word[i], j)){            
-//                 count++
-//                 j = word.indexOf(word[i], j) + 1        }
-//         console.log(count)
-//     }
-// }  
-
-////////////
-    // word.forEach(letter, idx, word => {
-    //     if (word.includes(letter, idx + 1)){
-    //         len = word.filter(letter => letter === word[i]).length
-    //         letter
-    //         word.splice(idx, 1)
-    //         console.log(len)
-            
-    //         // word.splice(word.indexOf(letter, idx+1))
-    //     }
-    // });
-
-//     return word.join('')
-//   }
 
 
 console.log(duplicateEncode("din"))
@@ -119,3 +89,36 @@ console.log(duplicateEncode("(( @"))
 //     }
 //     return word.join('')
 //   }
+
+
+//////
+// Elegant Solution
+
+function duplicateEncode(word){
+   
+    var unique='';
+    word = word.toLowerCase();
+    for(var i=0; i<word.length; i++){
+        if(word.lastIndexOf(word[i]) == word.indexOf(word[i])){
+            unique += '(';
+        }
+        else{
+            unique += ')';
+        }
+    }
+    return unique;
+
+}
+
+///////
+// Elegant solution 2 - great use of map
+
+function duplicateEncode(word){
+    return word
+      .toLowerCase()
+      .split('')
+      .map( function (a, i, w) {
+        return w.indexOf(a) == w.lastIndexOf(a) ? '(' : ')'
+      })
+      .join('');
+  }
