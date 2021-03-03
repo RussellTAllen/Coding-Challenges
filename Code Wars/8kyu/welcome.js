@@ -47,9 +47,9 @@ const db = {
     spanish: 'Bienvenido',
     swedish: 'Valkommen',
     welsh: 'Croeso',
-    IP_ADDRESS_INVALID: 'not a valid ipv4 or ipv6 ip address',
-    IP_ADDRESS_NOT_FOUND: 'ip address not in the database',
-    IP_ADDRESS_REQUIRED: 'no ip address was supplied'
+    IP_ADDRESS_INVALID: 'Welcome',
+    IP_ADDRESS_NOT_FOUND: 'Welcome',
+    IP_ADDRESS_REQUIRED: 'Welcome'
 }
 
 function greet(language) {
