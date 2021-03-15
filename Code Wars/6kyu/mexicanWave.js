@@ -16,15 +16,12 @@
 
 function wave(str){
     let results = []
-    let og = str
     for (let i = 0; i < str.length; i++){
         if (str[i] !== ' ') {
             str = str.split('')
             str.splice(i, 1, str[i].toUpperCase()).join('')
             results.push(str.join(''))
             str = str.join('').toLowerCase()
-
-            // results.push(str.replace(str[i], str[i].toUpperCase()))
         }
     }
     return results
