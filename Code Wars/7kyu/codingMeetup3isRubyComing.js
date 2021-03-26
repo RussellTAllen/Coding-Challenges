@@ -20,7 +20,6 @@
 // The input array will always be valid and formatted as in the example above.
 
 function isRubyComing(list) {
-    console.log(list.some(dev => dev.language === 'Ruby'))
     return list.some(dev => dev.language === 'Ruby')
 }
 
