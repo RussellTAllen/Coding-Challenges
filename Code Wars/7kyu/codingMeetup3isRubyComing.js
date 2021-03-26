@@ -20,8 +20,9 @@
 // The input array will always be valid and formatted as in the example above.
 
 function isRubyComing(list) {
-    // thank you for checking out my kata :)
-  }
+    console.log(list.some(dev => dev.language === 'Ruby'))
+    return list.some(dev => dev.language === 'Ruby')
+}
 
   var list1 = [
     { firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
