@@ -9,7 +9,7 @@
 // 'taxi' would become 'atix' 'taxis' would become 'atxsi'
 
 ////////////////////
-// BRUTE FORCE
+// BRUTE FORCE method
 function insideOut(x){
     let first, last, letter, newWord, newWord2
     let arr = x.split(' ')
