@@ -8,8 +8,11 @@ var removeElement= function(nums, val) {
             i--
         }
     }
-    return nums
+    return nums.length
 }
 
 console.log(removeElement([3,2,2,3], 3), 2, [2,2])
 console.log(removeElement([0,1,2,2,3,0,4,2], 2), 5, [0,1,4,0,3])
+
+// Runtime: 116 ms, faster than 5.83% of JavaScript online submissions for Remove Element.
+// Memory Usage: 38.1 MB, less than 95.53% of JavaScript online submissions for Remove Element.
