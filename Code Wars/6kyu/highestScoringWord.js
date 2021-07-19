@@ -38,8 +38,6 @@ function high(str){
     return str.split(' ')[values.indexOf(Math.max(...values))]
 }
 
-console.log(high('climbing'))
-console.log(high('volcano'))
 console.log(high('man i need a taxi up to ubud'))
 // => 'taxi'
 console.log(high('what time are we climbing up the volcano'))
