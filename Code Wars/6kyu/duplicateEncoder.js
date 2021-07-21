@@ -11,40 +11,42 @@
 
 // Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
 
-function duplicateEncode(word){
-    word = word.toLowerCase()
-    let replace1
-    if (word.includes(')') && !word.includes(')', word.indexOf(')') + 1)){
-        replace1 = word.indexOf(')')
-    }
-    for(let i = 0; i < word.length; i++){
-        if (word.includes(word[i], i+1)){
-            word = replaceAll(word, word[i], ")")
-        } 
-    }
-    word = word.split('')
-    word = word.map(letter => letter !== ")" ? "(" : letter)
+// LONG BRUTE FORCE SOLUTION
+// function duplicateEncode(word){
+//     word = word.toLowerCase()
+//     let replace1
+//     if (word.includes(')') && !word.includes(')', word.indexOf(')') + 1)){
+//         replace1 = word.indexOf(')')
+//     }
+//     for(let i = 0; i < word.length; i++){
+//         if (word.includes(word[i], i+1)){
+//             word = replaceAll(word, word[i], ")")
+//         } 
+//     }
+//     word = word.split('')
+//     word = word.map(letter => letter !== ")" ? "(" : letter)
 
-    if (replace1 != undefined) word.splice(replace1, 1, '(')
+//     if (replace1 != undefined) word.splice(replace1, 1, '(')
 
-    return word.join('')
+//     return word.join('')
+// }
+
+// function replaceAll(input, find, replace){
+//     let arr = input.split(find)
+//     return arr.join(replace)
+// }
+
+
+// SLICK METHODS SOLUTION
+function duplicateEncode(str){
+    str = str.toLowerCase()
+    return [...str].map(c => str.indexOf(c) === str.lastIndexOf(c) ? '(' : ')').join('')
 }
-
-function replaceAll(input, find, replace){
-    let arr = input.split(find)
-    return arr.join(replace)
-}
-
 
 console.log(duplicateEncode(' ( ( )'))
 // ")))))("
 console.log(duplicateEncode('deee)ue(aIFeQeO'))
 // "()))(()(((()()("
-
-
-
-
-
 console.log(duplicateEncode("din"))
 //  "((("
 console.log(duplicateEncode("recede"))
@@ -94,31 +96,31 @@ console.log(duplicateEncode("(( @"))
 //////
 // Elegant Solution
 
-function duplicateEncode(word){
+// function duplicateEncode(word){
    
-    var unique='';
-    word = word.toLowerCase();
-    for(var i=0; i<word.length; i++){
-        if(word.lastIndexOf(word[i]) == word.indexOf(word[i])){
-            unique += '(';
-        }
-        else{
-            unique += ')';
-        }
-    }
-    return unique;
+//     var unique='';
+//     word = word.toLowerCase();
+//     for(var i=0; i<word.length; i++){
+//         if(word.lastIndexOf(word[i]) == word.indexOf(word[i])){
+//             unique += '(';
+//         }
+//         else{
+//             unique += ')';
+//         }
+//     }
+//     return unique;
 
-}
+// }
 
 ///////
 // Elegant solution 2 - great use of map
 
-function duplicateEncode(word){
-    return word
-      .toLowerCase()
-      .split('')
-      .map( function (a, i, w) {
-        return w.indexOf(a) == w.lastIndexOf(a) ? '(' : ')'
-      })
-      .join('');
-  }
+// function duplicateEncode(word){
+//     return word
+//       .toLowerCase()
+//       .split('')
+//       .map( function (a, i, w) {
+//         return w.indexOf(a) == w.lastIndexOf(a) ? '(' : ')'
+//       })
+//       .join('');
+//   }
