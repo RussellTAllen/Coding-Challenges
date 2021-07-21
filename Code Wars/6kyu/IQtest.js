@@ -4,6 +4,7 @@
 
 // ! Keep in mind that your task is to help Bob solve a real IQ test, which means indexes of the elements start from 1 (not 0)
 
+// BRUTE FORCE LOOP SOLUTION
 // function iqTest(numbers){
 //     let even = 0
 //     let odd = 0
@@ -16,6 +17,7 @@
 //     return numbers.indexOf(result.toString()) + 1
 // }
 
+// SLICK, CONCISE SOLUTION
 function iqTest(nums){
     nums = nums.split(' ')
     let odd = nums.filter(n => n % 2 !== 0)
