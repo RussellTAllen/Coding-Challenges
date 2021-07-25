@@ -42,3 +42,6 @@ console.log(searchInsert([1,3,5,6], 2), 1)
 console.log(searchInsert([1,3,5,6], 7), 4)
 console.log(searchInsert([1,3,5,6], 0), 0)
 console.log(searchInsert([1], 0), 0)
+
+// Runtime: 68 ms, faster than 91.63% of JavaScript online submissions for Search Insert Position.
+// Memory Usage: 39.9 MB, less than 24.90% of JavaScript online submissions for Search Insert Position.
