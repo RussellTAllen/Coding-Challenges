@@ -8,17 +8,20 @@
 
 // arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
+// BRUTE FORCE SOLUTION
+// function arrayDiff(a, b){
+//     for (let i = 0; i < a.length; i++) {
+//         if (b.includes(a[i])) {
+//             a.splice(i, 1)
+//             i--
+//         }
+//     }
+//     return a
+// }
 
-function arrayDiff(a, b){
-    for (let i = 0; i < a.length; i++) {
-        if (b.includes(a[i])) {
-            a.splice(i, 1)
-            i--
-        }
-    }
-    return a
+function arrayDiff(a,b){
+    return a.filter(n => !b.includes(n))
 }
-
 
 console.log(arrayDiff([1,2],[1])) 
 // [2]
