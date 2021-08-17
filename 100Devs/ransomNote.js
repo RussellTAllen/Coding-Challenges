@@ -17,12 +17,51 @@ const magazine =
 // }
 
 // FILTER METHOD
+// function ransomNote(note, magazine){
+//     return note.split(' ').filter(w => {
+//         if (magazine.includes(w)){
+//             magazine = magazine.replace(w, '')
+//         }else return w
+//     }).length === 0
+// }
+
+// SOLUTION THAT ASSUMES YOU CANNOT CUT A WORD FROM ANOTHER WORD 
+// function ransomNote(note, magazine){
+//     let result = []
+//     magazine = magazine.split(' ')
+//     note.split(' ').forEach(w => {
+//         for (let i = 0; i < magazine.length; i++){
+//             if (magazine[i] === w) {
+//                 magazine.splice(i, 1)   
+//                 result.push(w)
+//                 break
+//             }
+//         }
+//     })
+//     return result.length === note.split(' ').length
+// }
+
+// LEON'S SOLUTION
 function ransomNote(note, magazine){
-    return note.split(' ').filter(w => {
-        if (magazine.includes(w)){
-            magazine = magazine.replace(w, '')
-        }else return w
-    }).length === 0
+    const magazineWords = magazine.split(' ')
+    const magazineHash = {}
+
+    magazineWords.forEach(word => {
+        if (!magazineHash[word]) magazineHash[word] = 0
+        magazineHash[word]++
+    })
+
+    const noteWords = note.split(' ')
+    let possible = true
+    
+    noteWords.forEach(word => {
+        if (magazineHash[word]){
+            magazineHash[word]--
+            if (magazineHash[word] < 0) possible = false
+        }else possible = false
+    })
+
+    return possible
 }
 
 
@@ -30,4 +69,4 @@ console.log(ransomNote("Lorem", magazine), true);
 console.log(ransomNote("sit ad est sint", magazine), true);
 console.log(ransomNote("sit ad est love", magazine), false);
 console.log(ransomNote("sit ad est sint in in", magazine), true);
-// console.log(ransomNote("sit ad est sint in in in in", magazine), false);
+console.log(ransomNote("sit ad est sint in in in in", magazine), false);
