@@ -27,11 +27,13 @@ function majorityElement(nums){
     nums.forEach(n =>{
         n in obj ? obj[n]++ : obj[n] = 1
     })
-    console.log(obj[0] > nums.length/3)
     return Object.keys(obj).filter(key => obj[key] > nums.length/3 && key)
 }
 
-// console.log(majorityElement([3,2,3]), [3])
-// console.log(majorityElement([1]), [1])
-// console.log(majorityElement([1,2]), [1,2])
+console.log(majorityElement([3,2,3]), [3])
+console.log(majorityElement([1]), [1])
+console.log(majorityElement([1,2]), [1,2])
 console.log(majorityElement([0,0,0]), [0])
+
+// Runtime: 84 ms, faster than 40.72% of JavaScript online submissions for Majority Element II.
+// Memory Usage: 41.5 MB, less than 82.34% of JavaScript online submissions for Majority Element II.
