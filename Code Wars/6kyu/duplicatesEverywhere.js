@@ -35,22 +35,26 @@
 
 const removeDuplicateIds = (obj) => {
     const result = {}
-    
     let reverseVals = []
-    Object.values(obj).forEach(arr => reverseVals += arr+",")
+    
+    Object.keys(obj).forEach(key => {
+        const filteredArr = [...new Set(obj[key])]
+        reverseVals += filteredArr+","
+        result[key] = filteredArr
+    })
     reverseVals = reverseVals.split(',').reverse()
     reverseVals.splice(0,1)
-
-    for (const [key, array] of Object.entries(obj)){
+    
+    for (const [key, array] of Object.entries(result)){
         let resultArr = []
         
         array.forEach(value => {
             reverseVals.splice(reverseVals.indexOf(value), 1)
-            if (!reverseVals.includes(value)){
+            if (!reverseVals.includes(value) && !resultArr.includes(value)){
                 resultArr.push(value)
             }
         })
-        result[key] = resultArr.sort()
+        result[key] = resultArr
     }
 
     return result
@@ -86,12 +90,28 @@ const obj3 = {
 // const result3 = removeDuplicateIds(obj3);
   
   
-console.log(removeDuplicateIds(obj), { "1": ["C"], "2": ["A", "B", "D"] });
-console.log(removeDuplicateIds(obj1), { "1": ["F", "G"], "2": ["C"], "3": ["A", "B", "D"] });
-console.log(removeDuplicateIds(obj2), { "1": [], "2": [], "3": ["A"] });
-console.log(removeDuplicateIds(obj3), {
-        "11": ["P", "R", "S"],
-        "53": ["C"],
-        "236": ["L", "X", "G", "H"],
-        "432": ["A", "B", "D"],
-      });
+// console.log(removeDuplicateIds(obj), { "1": ["C"], "2": ["A", "B", "D"] });
+// console.log(removeDuplicateIds(obj1), { "1": ["F", "G"], "2": ["C"], "3": ["A", "B", "D"] });
+// console.log(removeDuplicateIds(obj2), { "1": [], "2": [], "3": ["A"] });
+// console.log(removeDuplicateIds(obj3), {
+//         "11": ["P", "R", "S"],
+//         "53": ["C"],
+//         "236": ["L", "X", "G", "H"],
+//         "432": ["A", "B", "D"],
+//       });
+
+console.log(removeDuplicateIds({ '49': [ 'J', 'N', 'I', 'C', 'L', 'E', 'U' ],
+'106': [ 'N', 'L', 'U', 'X', 'Q', 'S', 'T' ],
+'206': [ 'D', 'N', 'R', 'N', 'U', 'P' ],
+'218': [ 'S', 'A', 'U', 'H', 'A', 'F' ],
+'342': [ 'U' ],
+'686': [ 'G', 'D', 'U', 'X', 'T', 'N', 'J', 'B', 'D' ],
+'802': [ 'X', 'P', 'O' ] }),
+
+{ '49': [ 'I', 'C', 'E' ],
+  '106': [ 'L', 'Q' ],
+  '206': [ 'R' ],
+  '218': [ 'S', 'A', 'H', 'F' ],
+  '342': [],
+  '686': [ 'G', 'D', 'U', 'T', 'N', 'J', 'B' ],
+  '802': [ 'X', 'P', 'O' ] })
