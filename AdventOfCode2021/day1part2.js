@@ -4,8 +4,8 @@ let arr = input.split(', ')
 let count = 0
 
 for (let i = 0; i < arr.length; i++){
-    let first = arr[i] + arr[i+1] + arr[i+2]
-    let second = arr[i+1] + arr[i+2] + arr[i+3]
+    let first = Number(arr[i]) + Number(arr[i+1]) + Number(arr[i+2])
+    let second = Number(arr[i+1]) + Number(arr[i+2]) + Number(arr[i+3])
 
     if (first < second) count++
 }
