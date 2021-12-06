@@ -13,10 +13,8 @@ function calculatePosition(moves){
             depth += (aim * Number(move.slice(move.indexOf(' ')+1)))
         }else if (move.includes('down')){
             aim += Number(move.slice(move.indexOf(' ')+1))
-            // depth += Number(move.slice(move.indexOf(' ')+1))
         }else if (move.includes('up')){
             aim -= Number(move.slice(move.indexOf(' ')+1))
-            // depth -= Number(move.slice(move.indexOf(' ')+1))
         }
     })
 
