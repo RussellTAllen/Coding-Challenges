@@ -27,23 +27,33 @@
 // Order of the objects in the array should be maintained but order of the properties in the individual objects does not matter.
 
 
-
 function addUsername(list) {
-    for (let i=0; i<list.length; i++){
-        list[i].username = (list[i].firstName + list[i].lastName[0]).toLowerCase() + (new Date().getFullYear() - list[i].age)
-    }
-    return list
+  const year = new Date().getFullYear()
+  
+  list.forEach(user => user.username = user.firstName.toLowerCase() + user.lastName[0].toLowerCase() + (year - user.age))
+  return list
 }
 
+
 var list1 = [
-  { firstName: 'Emily', lastName: 'N.', country: 'Ireland', continent: 'Europe', age: 30, language: 'Ruby' },
-  { firstName: 'Nor', lastName: 'E.', country: 'Malaysia', continent: 'Asia', age: 20, language: 'Clojure' }
+  { firstName: 'Emily', lastName: 'N.', country: 'Ireland', continent: 'Europe', age: 32, language: 'Ruby' },
+  { firstName: 'Nor', lastName: 'E.', country: 'Malaysia', continent: 'Asia', age: 22, language: 'Clojure' }
 ]
 
 console.log(addUsername(list1))
 // [
-//   { firstName: 'Emily', lastName: 'N.', country: 'Ireland', continent: 'Europe', age: 30, language: 'Ruby', 
-//     username: 'emilyn1990' },
-//   { firstName: 'Nor', lastName: 'E.', country: 'Malaysia', continent: 'Asia', age: 20, language: 'Clojure', 
-//     username: 'nore2000' }
-// ]
+  //   { firstName: 'Emily', lastName: 'N.', country: 'Ireland', continent: 'Europe', age: 32, language: 'Ruby', 
+  //     username: 'emilyn1990' },
+  //   { firstName: 'Nor', lastName: 'E.', country: 'Malaysia', continent: 'Asia', age: 22, language: 'Clojure', 
+  //     username: 'nore2000' }
+  // ]
+
+
+
+  // FIRST SOLUTION
+  // function addUsername(list) {
+  //     for (let i=0; i<list.length; i++){
+  //         list[i].username = (list[i].firstName + list[i].lastName[0]).toLowerCase() + (new Date().getFullYear() - list[i].age)
+  //     }
+  //     return list
+  // }
