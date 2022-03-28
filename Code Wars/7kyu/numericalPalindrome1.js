@@ -3,16 +3,7 @@
 
 function palindrome(num) { 
     if (typeof num !== 'number' || num < 1) return "Not valid"
-
-
-
-    const numArr = num.toString().split('').map(n => Number(n))
-
-    // // console.log(numArr)
-    // console.log('numArr', numArr.join(''))
-    // console.log('numArrReverse', numArr.reverse().join(''))
-    // console.log(numArr.join('') == numArr.reverse().join(''))
-    return numArr.join('') == numArr.reverse().join('')
+    return num.toString().split('').reverse().join('') === num.toString()
 } 
 
 console.log(palindrome(1221),true);
