@@ -7,15 +7,12 @@ function palindrome(num,s) {
 
     while(s > 0){
         while(String(num).split('').reverse().join('') !== String(num)){
-            // console.log('num',num)
             num++
         }
-
         result.push(num)
         num++
         s--
     }
-
     return result
 }
 
