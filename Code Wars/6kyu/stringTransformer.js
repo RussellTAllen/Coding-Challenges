@@ -12,8 +12,13 @@
 // "Example Input" ==> "iNPUT eXAMPLE"
 // You may assume the input only contain English alphabet and spaces.
 
-function stringTransformer(str){
-    return [...str].map(l => /[A-Z]/.test(l) ? l.toLowerCase() : l.toUpperCase()).join('').split(' ').reverse().join(' ')
+// function stringTransformer(str){
+//     return [...str].map(l => /[A-Z]/.test(l) ? l.toLowerCase() : l.toUpperCase()).join('').split(' ').reverse().join(' ')
+// }
+
+function stringTransformer(str) {
+    const reverse = str.split(' ').reverse()
+    return reverse.map(word => [...word].map(c => c.match(/[A-Z]/) ? c.toLowerCase() : c.toUpperCase()).join('')).join(' ')
 }
 
 console.log(stringTransformer('Example string'), 'STRING eXAMPLE');
